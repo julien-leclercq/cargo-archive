@@ -1,0 +1,19 @@
+[package]
+name = "cargo-archive"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "cargo-archive"
+path = "src/archive.rs"
+
+[[bin]]
+name = "cargo-unarchive"
+path = "src/unarchive.rs"
+
+[dependencies]
+cargo_metadata = "0.18.1"
+tar = "0.4.40"
+zstd = "0.13.1"
