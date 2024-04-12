@@ -3,6 +3,8 @@ name = "cargo-archive"
 version = "0.1.0"
 edition = "2021"
 authors = ["Julien Leclercq"]
+license = "MIT"
+description = "Archive and unarchive heavy target directories in a tar.zstd file"
 repository = "https://github.com/julien-leclercq/cargo-archive"
 
 [[bin]]
