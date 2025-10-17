@@ -14,6 +14,9 @@ snafu = "0.8.9"
 tar = "0.4.44"
 zstd = "0.13.1"
 
+[lints.clippy]
+pedantic = { level = "warn" }
+
 [[bin]]
 name = "cargo-archive"
 

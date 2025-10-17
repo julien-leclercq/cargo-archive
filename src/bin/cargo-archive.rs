@@ -11,7 +11,7 @@ fn main() -> Result<(), Whatever> {
     let meta = cargo_archive::get_metadata(&path)
         .with_whatever_context(|_| format!("could not run cargo metadata cmd for `{path}`"))?;
 
-    cargo_archive::archive(meta)
+    cargo_archive::archive(&meta)
         .with_whatever_context(|_| format!("could not archive for `{path}`"))
 }
 

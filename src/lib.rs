@@ -25,7 +25,10 @@ pub enum ArchiveError {
     CleaningError { source: io::Error },
 }
 
-pub fn archive(meta: Metadata) -> Result<(), ArchiveError> {
+/// # Errors
+///
+/// Will return an `ArchiveError` see variants for more details.
+pub fn archive(meta: &Metadata) -> Result<(), ArchiveError> {
     let archive_path = meta.workspace_root.as_std_path().join("target.tar.zstd");
     let to_archive_dir = meta.target_directory.as_std_path();
 
@@ -78,6 +81,9 @@ pub enum UnarchiveError {
     ArchiveUnpackError { source: io::Error },
 }
 
+/// # Errors
+///
+/// Will return an `UnarchiveError` see variants for more details.
 pub fn unarchive(meta: Metadata) -> Result<(), UnarchiveError> {
     let target = meta.target_directory;
     let target_archive = meta.workspace_root.join("target.tar.zstd");
@@ -104,6 +110,11 @@ pub fn unarchive(meta: Metadata) -> Result<(), UnarchiveError> {
     std::fs::remove_file(target_archive).context(ArchiveUnpackSnafu)
 }
 
+/// Runs configured `cargo metadata` and returns parsed `Metadata`.
+///
+/// # Errors
+///
+/// Will return a `cargo_metadata::Error` see variants for more details.
 pub fn get_metadata(folder_path: impl AsRef<Path>) -> cargo_metadata::Result<Metadata> {
     cargo_metadata::MetadataCommand::new()
         .manifest_path(Path::join(folder_path.as_ref(), "Cargo.toml"))

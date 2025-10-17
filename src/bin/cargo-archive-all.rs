@@ -43,7 +43,7 @@ fn traverse_directory(
     if depth > max_depth {
         eprintln!("max depth reached");
         return Ok(());
-    };
+    }
 
     read_dir(&path)
         .unwrap_or_else(|_| panic!("could not open {}", path.as_ref().to_str().unwrap()))
@@ -64,7 +64,7 @@ fn traverse_directory(
             }
 
             if let Ok(meta) = cargo_archive::get_metadata(dir_entry.path()) {
-                return cargo_archive::archive(meta).whatever_context("context");
+                return cargo_archive::archive(&meta).whatever_context("context");
             }
 
             traverse_directory(dir_entry.path(), depth + 1, max_depth)
