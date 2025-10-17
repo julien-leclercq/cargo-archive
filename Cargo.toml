@@ -7,15 +7,24 @@ license = "MIT"
 description = "Archive and unarchive heavy target directories in a tar.zstd file"
 repository = "https://github.com/julien-leclercq/cargo-archive"
 
+[dependencies]
+cargo_metadata = "0.23.0"
+clap = { version = "4.5.48", features = ["derive"] }
+snafu = "0.8.9"
+tar = "0.4.44"
+zstd = "0.13.1"
+
 [[bin]]
 name = "cargo-archive"
-path = "src/archive.rs"
 
 [[bin]]
 name = "cargo-unarchive"
-path = "src/unarchive.rs"
 
-[dependencies]
-cargo_metadata = "0.18.1"
-tar = "0.4.40"
-zstd = "0.13.1"
+[[bin]]
+name = "cargo-archive-all"
+
+[[bin]]
+name = "cargo-unarchive-check"
+
+[[bin]]
+name = "cargo-unarchive-clippy"
